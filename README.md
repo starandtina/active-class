@@ -83,12 +83,12 @@ var Child = Class(Parent, Teacher, {
 
 ## Documentation
 
-Refer to __doc__ directory.
+Refer to __doc__ directory, and it's generated with [docco](http://jashkenas.github.io/docco/). You could check the online doc from [here](https://cdn.rawgit.com/starandtina/active-class/master/docs/docco/active-class.html).
 
 ## Build
 
 ```
-$ Grunt
+$ grunt
 ```
 
 ## Test
