@@ -1,0 +1,7 @@
+node_modules
+test/temp
+tmp
+.DS_Store
+npm-debug.log
+coverage
+report

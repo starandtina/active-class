@@ -1,0 +1,23 @@
+{
+  "name": "active-class",
+  "version": "0.0.0",
+  "description": "Define your Class with JavaScript.",
+  "main": "dist/active-class.js",
+  "author": {
+    "name": "starandtina",
+    "email": "kandmforever@126.com"
+  },
+  "repository": {
+    "url": "https://github.com/starandtina/active-class.git",
+    "type": "git"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>active-class.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>active-class.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*! active-class - v0.0.1
+ *  Release on: 2014-11-19
+ *  Copyright (c) 2014 starandtina
+ *  Licensed MIT */</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(root, factory)</span> </span>{
+<span class="hljs-pi">  'use strict'</span>;
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>AMD. Register as an anonymous module.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    define([], factory);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">'object'</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Node. Does not work with strict CommonJS, but
+only CommonJS-like environments that support module.exports,
+like Node.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">module</span>.exports = factory();
+  } <span class="hljs-keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Browser globals</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    root.Class = factory();
+  }
+}(<span class="hljs-keyword">this</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+<span class="hljs-pi">  'use strict'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Constructor: Class
+Base class used to construct all other classes. Includes support for multiple inheritance.</p>
+<p>To create a new class, use the following syntax:</p>
+<pre><code><span class="hljs-keyword">var</span> MyClass = Class(prototype);
+</code></pre><p>To create a new class with multiple inheritance, use the following syntax:</p>
+<pre><code><span class="hljs-keyword">var</span> MyClass = Class(Class1, Class2, prototype);
+</code></pre><p>Note that instanceof reflection will only reveal Class1 as superclass.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> Class = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> len = <span class="hljs-built_in">arguments</span>.length;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>The fist one is the superclass</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> P = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>By default, the last one is the prototype object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> F = <span class="hljs-built_in">arguments</span>[len - <span class="hljs-number">1</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>The default constructor
+If the parent Class has <code>_constructor</code> property, then call it fristly</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> C = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">if</span> (C.uber &amp;&amp; C.uber.hasOwnProperty(<span class="hljs-string">'_constructor'</span>)) {
+        C.uber._constructor.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+      }
+
+      <span class="hljs-keyword">if</span> (C.prototype.hasOwnProperty(<span class="hljs-string">'_constructor'</span>)) {
+        C.prototype._constructor.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+      }
+    };
+
+    <span class="hljs-keyword">if</span> (len &gt; <span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">var</span> newArgs = [C, P].concat(
+        <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>).slice(<span class="hljs-number">1</span>, len - <span class="hljs-number">1</span>), F);
+      inherit.apply(<span class="hljs-literal">null</span>, newArgs);
+    } <span class="hljs-keyword">else</span> {
+      C.prototype = F;
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Binding <code>extend</code> method on the <code>constructor</code>, so we could use it like:</p>
+<pre><code><span class="hljs-keyword">var</span> MyClass = Class(prototype).extend(callback);
+</code></pre><p>The callback function is exectued in the context of <code>C.prototype</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    C.extend = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(components)</span> </span>{
+      <span class="hljs-keyword">if</span> (<span class="hljs-string">'[object Array]'</span> !== <span class="hljs-built_in">Object</span>.prototype.toString.call(components)) {
+        components = <span class="hljs-built_in">Array</span>.prototype.concat.call(components);
+      }
+
+      <span class="hljs-keyword">var</span> i = components.length;
+      <span class="hljs-keyword">while</span> (i--) {
+        components[i].call(C.prototype);
+      }
+
+      <span class="hljs-keyword">return</span> C;
+    };
+
+    <span class="hljs-keyword">return</span> C;
+  };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>C will inherit from P
+In addition to the mandatory C and P parameters, an arbitrary number of
+objects can be passed, which will extend C.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> inherit = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(C, P)</span> </span>{
+    <span class="hljs-keyword">var</span> F = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{};
+    F.prototype = P.prototype;
+    C.prototype = <span class="hljs-keyword">new</span> F();
+    C.uber = P.prototype;
+    <span class="hljs-keyword">var</span> i, l, o;
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>, l = <span class="hljs-built_in">arguments</span>.length; i &lt; l; i++) {
+      o = <span class="hljs-built_in">arguments</span>[i];
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> o === <span class="hljs-string">'function'</span>) {
+        o = o.prototype;
+      }
+      extend(C.prototype, o);
+    }
+  };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Copy all properties of a source object to a destination object.
+Modifies the passed in destination object.  Any properties on the source object
+that are set to undefined will not be (re)set on the destination object.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> extend = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(destination, source)</span> </span>{
+    destination = destination || {};
+    <span class="hljs-keyword">if</span> (source) {
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> property <span class="hljs-keyword">in</span> source) {
+        <span class="hljs-keyword">var</span> value = source[property];
+        <span class="hljs-keyword">if</span> (value !== <span class="hljs-literal">undefined</span>) {
+          destination[property] = value;
+        }
+      }
+    }
+
+    <span class="hljs-keyword">return</span> destination;
+  };
+
+  <span class="hljs-keyword">return</span> Class;
+}));</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

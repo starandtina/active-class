@@ -1,0 +1,13 @@
+default:
+  - build
+
+build:
+  - clean
+  - jshint:lib
+  - jscs:lib
+  - lintspaces:lib
+  - concat
+  - uglify
+
+doc:
+  - docco
