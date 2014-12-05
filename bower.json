@@ -1,6 +1,6 @@
 {
   "name": "active-class",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Define your Class with JavaScript.",
   "main": "dist/active-class.js",
   "author": {

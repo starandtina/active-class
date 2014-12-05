@@ -19,7 +19,7 @@ var Foo = Class({
 });
 var foo;
 
-describe('Class({})', function () {
+describe('Class({}).extend', function () {
   beforeEach(function () {
     foo = new Foo('starandtina');
   });
