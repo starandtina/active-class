@@ -1,0 +1,11 @@
+{
+  "name": "active-class",
+  "repo": "starandtina/active-class",
+  "description": "Define your Class with JavaScript.",
+  "version": "0.0.1",
+  "keywords": ["Class", "JavaScript"],
+  "license": "MIT",
+  "scripts": [
+    "./dist/active-class.js"
+  ]
+}
